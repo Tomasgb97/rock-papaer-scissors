@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+<script>
+function newRound(){
+function ComputerChoice(){                           //function to get a random choice from the computer
+const options = ['Rock', 'Paper', 'Scissors']        //options to choose from
+const optionsPick = Math.floor(Math.random() *       //way to get a random index from the options array
+ options.length); 
+return options[optionsPick];                         // returning the content of that index in the array
+}
+
+let playerSelection = 'Rock';
+let computerSelection = ComputerChoice();
+
+function showPicks(){
+    console.log(`player pick: ${playerSelection} vs computer pick: ${computerSelection}`)
+}
+showPicks();
+
+function playRound(){
+    if(playerSelection === computerSelection){
+        console.log('It\'s a tie !')
+    } else if (playerSelection === 'Rock' && computerSelection == 'Paper'){
+        console.log('Oh no, computer wins this round')
+    } else if (playerSelection == 'Rock' && computerSelection == 'Scissors'){
+        console.log('Great, you get this round!')
+    }else if (playerSelection === 'Paper' && computerSelection == 'Scissors'){
+        console.log('Oh no, computer wins this round')
+    }else if (playerSelection === 'Paper' && computerSelection == 'Rock'){
+        console.log('Great, you get this round!')
+    }else if (playerSelection === 'Scissors' && computerSelection == 'Rock'){
+        console.log('Oh no, computer wins this round')
+    } else if (playerSelection === 'Scissors' && computerSelection == 'Paper'){
+        console.log('Great, you get this round !')
+    }}
+    playRound();
+}
+</script>
+</body>
+</html>
