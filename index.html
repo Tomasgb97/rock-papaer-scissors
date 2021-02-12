@@ -1,70 +1,174 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<html>
+<html >
 <head>
+    
     <title>Rock Paper Scissors</title>
-</head>
-<body>
-<script>
+<style>
+    @font-face {
+        font-family: scoreboard;
+        src: url(fonts/scoreboard.ttf);
+    }
+    @font-face {
+        font-family: myfont;
+        src: url(fonts/28\ Days\ Later.ttf);
+    }
 
-playerpoints = 0;
-computerpoints = 0;
+   @keyframes movimiento{
 
-function newGame(){
-while(playerpoints < 5 && computerpoints < 5){
-    newRound();
-}}
+       50%{
 
-newGame();
+           transform: translateX(20vh);
+           transform: scale(2);
+           animation-duration: 3s;
+       }
+   }
 
-function newRound(){
     
 
-function ComputerChoice(){                           //function to get a random choice from the computer
-const options = ['Rock', 'Paper', 'Scissors']        //options to choose from
-const optionsPick = Math.floor(Math.random() *       //way to get a random index from the options array
- options.length); 
-return options[optionsPick];                         // returning the content of that index in the array
+  .fondo{
+      background-image: url(background.jpg);
+      background-repeat: no-repeat;
+      background-size: 100vw 100vh;
+    
+      ;
+  }
+.buttondivs{
+
+    display: flex;
+    width: 30vw;
+    height: 25vh;
+    border-radius: 15px;
+    margin-top: 2vh;
+    
 }
+input:focus{
 
-let playerSelection = 'Rock';
-let computerSelection = ComputerChoice();
-
-function showPicks(){
-    console.log(`player pick: ${playerSelection} vs computer pick: ${computerSelection}
-    SCOREBOARD ----> PLAYER :   ${playerpoints} || COMPUTER:   ${computerpoints}`)
+    outline: none;
 }
-showPicks();
-
-function playRound(){
-    if(playerSelection === computerSelection){
-        console.log('It\'s a tie !')
-    } else if (playerSelection === 'Rock' && computerSelection == 'Paper'){
-        console.log('Oh no, computer wins this round'), 
-        computerpoints += 1;
-    } else if (playerSelection == 'Rock' && computerSelection == 'Scissors'){
-        console.log('Great, you get this round!'),
-        playerpoints +=1;
-    }else if (playerSelection === 'Paper' && computerSelection == 'Scissors'){
-        console.log('Oh no, computer wins this round'),
-        computerpoints += 1;
-    }else if (playerSelection === 'Paper' && computerSelection == 'Rock'){
-        console.log('Great, you get this round!'),
-        playerpoints +=1;
-    }else if (playerSelection === 'Scissors' && computerSelection == 'Rock'){
-        console.log('Oh no, computer wins this round'),
-        computerpoints += 1;
-    } else if (playerSelection === 'Scissors' && computerSelection == 'Paper'){
-        console.log('Great, you get this round !'),
-        playerpoints +=1;
-    }}
-      playRound();
-      console.log(`The actual SCOREBOARD IS -------> 
-      PLAYER:   ${playerpoints} || COMPUTER:     ${computerpoints}`);
+#scoreboard{
+    display: flex;
+    width: 25vw;
+    height: 15vh;
+    border-radius: 20px;
+    margin-left: 38vw;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    background-image: url(download.jpeg);
+    background-size: cover;
+    justify-content: center;
+    font-family: myfont;
+    
 
 }
-if(playerpoints == 5){console.log('YOU WON !')
-}else if(computerpoints == 5){console.log('COMPUTER WON!')}
-</script>
+.numeros{
+
+    text-align: center;
+    border: 2px solid rgb(0 0 0);
+    border-radius: 10px;
+    font-size: 80px;
+    margin-top: 3vh;
+    background-color: #f5f5f540;
+    height: 11vh;
+    width: 7vw;
+    box-shadow: 14px 12px 5px -9px rgb(0 0 0 / 75%);
+    font-family: myfont;
+}
+.score{
+
+    background-color  :#ffffff63;;
+    height: fit-content;
+    margin-top: 1vh;
+    border-radius: 10px;
+    width: 10vw;
+    text-align: center;
+}
+
+.tieclass{
+
+    font-size: 60px;
+    justify-content: center;
+    color: red;
+}
+
+#result{
+
+    width: 50vw;
+    margin-left: 0px;
+    bottom: 10vh;
+    left: 24vw;
+    height: 8vh;
+    position: absolute;
+    background: transparent;
+}
+.resultext{
+
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 0px;
+    margin-top: 1vh;
+    color: white;
+    font-family: myfont;
+}
+#manopc{
+
+    position: absolute;
+    height: 27vh;
+    left: 87vw;
+    bottom: 29vh;
+}
+#piedrapc{
+
+    position: absolute;
+    height: 27vh;
+    left: 87vw;
+    bottom: 56vh;
+}
+#scissorspc{
+
+    position: absolute;
+    height: 27vh;
+    left: 88vw;
+    bottom: 0.5vh;
+}
+
+
+</style>
+</head>
+
+<body>
+    <div id="scoreboard">
+        <p id="playerpoints" class="numeros">0</p>
+        <div class="score">SCOREBOARD</div> 
+        <p id="computerpoints" class="numeros">0</p>
+    </div>
+
+
+    <div class="divbar" >
+        <input type="image" src="rock.png" id=rock ></input>
+        
+    </div>
+    <div class="divbar">
+        <input type="image" src="paper.png" id=paper></input>
+    </div>
+    <div class="divbar">
+        <input type="image" src="scissors.png" id=scissors></input>
+    </div>
+
+
+    <div id="result">
+        <p id="resultext"></p>
+    </div>
+
+    <img id="piedrapc" src="rock.png" alt="">
+    <img id="manopc" src="paper.png" alt="">
+    <img id="scissorspc" src="scissors.png" alt="">
+
+<script src="js.js"></script>
 </body>
+
+<audio id="audiorock" src="audio/rock.mp3"></audio>
+<audio id="audiopaper" src="audio/paper.mp3"></audio>
+<audio id="audioscissors" src="audio/scissors.mp3"></audio>
 </html>
