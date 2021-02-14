@@ -17,7 +17,13 @@ let computerSelection = ComputerChoice();
 
 function playRound(){
     if(playerSelection === computerSelection){
-        itsatie();
+        itsatie(); if(computerSelection == 'paper'){
+            manopc.classList.add('movimiento2');
+        }else if(computerSelection == 'rock'){
+            piedrapc.classList.add('movimiento2');
+        }else if( computerSelection == 'scissors'){
+            scissorspc.classList.add('movimiento2');
+        }
     } else if (playerSelection === 'rock' && computerSelection == 'paper'){
         youLose(), manopc.classList.add('movimiento2');
         computerpoints += 1;
