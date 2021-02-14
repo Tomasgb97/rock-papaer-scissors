@@ -16,11 +16,39 @@
 
    @keyframes movimiento{
 
+       0%{
+
+           margin-left: 0vw;
+       }
+
        50%{
 
-           transform: translateX(20vh);
+           margin-left: 20vw;
            transform: scale(2);
-           animation-duration: 3s;
+       }
+
+       100%{
+
+           margin-left: 0vw;
+       }
+   }
+
+   @keyframes movimiento2{
+
+       0%{
+
+           margin-right: 0vw;
+       }
+
+       50%{
+
+           left: 70vw;
+           transform: scale(2);
+       }
+
+       100%{
+
+           margin-right: 0vw;
        }
    }
 
@@ -132,6 +160,22 @@ input:focus{
     left: 88vw;
     bottom: 0.5vh;
 }
+.movimiento{
+
+    
+    animation: movimiento;
+    animation-duration: 2s;
+    transition: all 2s;
+
+}
+.movimiento2{
+
+
+    animation: movimiento2;
+    animation-duration: 2s;
+    transition: all 2s;
+
+}
 
 
 </style>
@@ -161,9 +205,9 @@ input:focus{
         <p id="resultext"></p>
     </div>
 
-    <img id="piedrapc" src="rock.png" alt="">
-    <img id="manopc" src="paper.png" alt="">
-    <img id="scissorspc" src="scissors.png" alt="">
+    <img class="pc" id="piedrapc" src="rock.png" alt="">
+    <img class="pc" id="manopc" src="paper.png" alt="">
+    <img class="pc" id="scissorspc" src="scissors.png" alt="">
 
 <script src="js.js"></script>
 </body>

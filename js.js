@@ -19,22 +19,22 @@ function playRound(){
     if(playerSelection === computerSelection){
         itsatie();
     } else if (playerSelection === 'rock' && computerSelection == 'paper'){
-        youLose(), 
+        youLose(), manopc.classList.add('movimiento2');
         computerpoints += 1;
     } else if (playerSelection == 'rock' && computerSelection == 'scissors'){
-        youWon(),
+        youWon(), scissorspc.classList.add('movimiento2');
         playerpoints +=1;
     }else if (playerSelection === 'paper' && computerSelection == 'scissors'){
-        youLose(),
+        youLose(), scissorspc.classList.add('movimiento2'),
         computerpoints += 1;
     }else if (playerSelection === 'paper' && computerSelection == 'rock'){
-        youWon(),
+        youWon(), piedrapc.classList.add('movimiento2'),
         playerpoints +=1;
     }else if (playerSelection === 'scissors' && computerSelection == 'rock'){
-       youLose(),
+       youLose(), piedrapc.classList.add('movimiento2'),
         computerpoints += 1;
     } else if (playerSelection === 'scissors' && computerSelection == 'paper'){
-        youWon(),
+        youWon(), manopc.classList.add('movimiento2'),
         playerpoints +=1;
         
         
@@ -66,7 +66,14 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+
+const piedrapc = document.querySelector('#piedrapc');
+const manopc = document.querySelector('#manopc');
+const scissorspc = document.querySelector('#scissorspc');
+
 function chooseRock(){
+
+    rock.classList.add('movimiento')
 
     const audio = document.querySelectorAll('audio');
     audio[0].currentTime=0;
@@ -76,8 +83,9 @@ function chooseRock(){
 }
 function choosePaper(){
 
-    const audio =  document.querySelectorAll('audio')
+    paper.classList.add('movimiento');
 
+    const audio =  document.querySelectorAll('audio')
     audio[1].currentTime=0;
     audio[1].play();
 
@@ -86,15 +94,16 @@ function choosePaper(){
 
 function chooseScissors(){
 
+  scissors.classList.add('movimiento');
+
   const audio = document.querySelectorAll('audio');
   audio[2].currentTime=0;
-
   audio[2].play();
     newRound('scissors');
 
 }
 
-rock.addEventListener('click', chooseRock, rockmove);
+rock.addEventListener('click', chooseRock);
 paper.addEventListener('click', choosePaper);
 scissors.addEventListener('click', chooseScissors);
 
@@ -146,8 +155,20 @@ function lostGme(){
     text.textContent ='OHHHH NO... YOU LOST.';
 }
 
-function rockmove(){
+const inputs = document.querySelectorAll('input');
 
-    rock.style.animation["@keyframes"]= "movimiento";
+inputs.forEach( input => input.addEventListener('animationend', deleteClasses));
 
-}
+function deleteClasses(e){
+
+    this.classList.remove('movimiento');
+ }
+
+
+ const pc = document.querySelectorAll('.pc');
+
+pc.forEach( input => input.addEventListener('animationend', deleteClass));
+
+function deleteClass(e){
+
+    this.classList.remove('movimiento2');}
